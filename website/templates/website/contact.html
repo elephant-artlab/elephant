@@ -1,0 +1,61 @@
+{% extends "website/index.html"%}
+
+{% block content %}
+
+{% load staticfiles %}
+
+<div id="contact-container">
+
+	<div id="contact-form">
+		<h2>Contáctanos</h2>
+		<form method="POST">
+			{% csrf_token %}
+			<p>Nombre <span>{{ form.name.errors.as_text | cut:"*" }}</span></p> {{ form.name }} <br>
+			<p>Email <span>{{ form.email.errors.as_text | cut:"*" }}</span> </p> {{ form.email }} <br>
+			<p>Mensaje <span>{{ form.message.errors.as_text | cut:"*" }}</span> </p> {{ form.message }} <br>
+			<br>
+			<button class="send">ENVIAR</button>
+			{% if data_entered and message_sent %}
+			<label id="sentMessage">Tu mensaje ha sido enviado.</label>
+			{% elif data_entered and not message_sent %}
+			<label id="sentMessage">Tu mensaje no se pudo enviar.</label>
+			{% endif %}
+		</form>
+	</div>
+
+	<div id="social">
+		<h2>Encuéntranos</h2>
+		<table>
+			<tr>
+				<td><a href="http://www.facebook.com/elephantartlab" target="_blank"><img src="{% static 'website/images/social/1o.png' %}" height="80" onmouseover="this.src='{% static 'website/images/social/1c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/1o.png' %}'"></a></td>
+				<td><a href="http://www.twitter.com/ElephantArtLab" target="_blank"><img src=" {% static 'website/images/social/2o.png' %}" height="80" onmouseover="this.src=' {% static 'website/images/social/2c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/2o.png' %}'"></a></td>
+				<td><a href="http://instagram.com/elephantartlab" target="_blank"><img src=" {% static 'website/images/social/3o.png' %}" height="80" onmouseover="this.src=' {% static 'website/images/social/3c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/3o.png' %}'"></a></td>
+				<td><a href="" target="_blank"><img src=" {% static 'website/images/social/4o.png' %}" height="80" onmouseover="this.src=' {% static 'website/images/social/4c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/4o.png' %}'"></a></td>
+			</tr>
+			<tr>
+				<td><a href="https://www.behance.net/elephantartlab" target="_blank"><img src=" {% static 'website/images/social/5o.png' %}" height="80" onmouseover="this.src=' {% static 'website/images/social/5c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/5o.png' %}'"></a></td>
+				<td><a href="https://www.youtube.com/user/elephantartlab" target="_blank"><img src=" {% static 'website/images/social/6o.png' %}" height="80" onmouseover="this.src=' {% static 'website/images/social/6c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/6o.png' %}'"></a></td>
+				<td><a href="https://vimeo.com/elephantartlab" target="_blank"><img src=" {% static 'website/images/social/7o.png' %}" height="80" onmouseover="this.src=' {% static 'website/images/social/7c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/7o.png' %}'"></a></td>
+				<td><a class="skype-icon" href="/skype/"><img src=" {% static 'website/images/social/8o.png' %}" height="80" onmouseover="this.src=' {% static 'website/images/social/8c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/8o.png' %}'"></a></td>
+			</tr>
+		</table>
+		<br>
+		<div id="social-text">
+		<p>Para solicitar información búscanos en cualquiera de nuestras redes sociales o escríbenos un correo electrónico.</p>
+		<p><a href="mailto:contacto@elephant-artlab.com">contacto@elephant-artlab.com</a></p>
+		<p>Nosotros nos pondremos en contacto contigo tan pronto como sea posible.</p>
+		</div>
+	</div>
+
+
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+	$( "#sentMessage" ).delay(5000).fadeOut();
+
+});
+</script>
+
+{% endblock %}

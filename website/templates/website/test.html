@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/harmonic_synth.css"/>
+	<!-- <script type="text/javascript" src="{{MEDIA_URL}}js/harmonic_synth.js"></script> -->
+</head>
+
+<body>
+
+	<h3>Fundamental Frequency</h3>
+	<label for="frequency-control">Frequency</label>
+	<input id="frequency-control" type="range" min="20" max="1000" value="200" step="1" oninput="controlFrequency(value)">
+	<output for="frequency-control" id="frequency">200</output>
+
+	<select id="waveform" onchange="changeWaveform()">
+		<option value="0">Sine</option>
+		<option value="1">Square</option>
+		<option value="2">Sawtooth</option>
+		<option value="3">Triangle</option>
+	</select>
+
+	<table>
+		
+		<tr>
+			<td>
+				<input id="volume-control-1" class="volume-control" type="range" min="0" max="1" value="0.5" step="0.01" oninput="controlVolume1(value)">
+				<br>
+				<output for="volume-control-1" id="volume-1">0.5</output>
+			</td>
+			<td>
+				<input id="volume-control-2" class="volume-control" type="range" min="0" max="1" value="0" step="0.01" oninput="controlVolume2(value)">
+				<br>
+				<output for="volume-control-2" id="volume-2">0</output>
+			</td>
+			<td>
+				<input id="volume-control-3" class="volume-control" type="range" min="0" max="1" value="0" step="0.01" oninput="controlVolume3(value)">
+				<br>
+				<output for="volume-control-3" id="volume-3">0</output>
+			</td>
+			<td>
+				<input id="volume-control-4" class="volume-control" type="range" min="0" max="1" value="0" step="0.01" oninput="controlVolume4(value)">
+				<br>
+				<output for="volume-control-4" id="volume-4">0</output>
+			</td>
+			<td>
+				<input id="volume-control-5" class="volume-control" type="range" min="0" max="1" value="0" step="0.01" oninput="controlVolume5(value)">
+				<br>
+				<output for="volume-control-5" id="volume-5">0</output>
+			</td>
+		</tr>
+
+	</table>
+
+	<br>
+	<div id="play-audio">Play</div>
+	<div id="stop-audio">Stop</div>
+
+	<input id="master-volume-control" class="master-control" type="range" min="0" max="1" value="0.5" step="0.01" oninput="controlMaster(value)">
+	<output for="master-volume-control" id="master-volume">0.5</output>
+
+	<script>
+
+	var context = new webkitAudioContext();
+	var master = context.createGainNode();
+	master.gain.value = 0.5;
+	
+	var oscillator_1, oscillator_2, oscillator_3, oscillator_4, oscillator_5;
+	var gain_1, gain_2, gain_3, gain_4, gain_5;
+	var oscillators = [oscillator_1, oscillator_2, oscillator_3, oscillator_4, oscillator_5];
+	var gains = [gain_1, gain_2, gain_3, gain_4, gain_5];
+	var playing;
+
+	function startOsc(){
+
+		playing = true;
+
+		for (var i = 0; i < oscillators.length; i++) { 
+
+			oscillators[i] = context.createOscillator();
+			oscillators[i].type = parseInt(document.getElementById("waveform").value);
+			oscillators[i].frequency.value = document.querySelector('#frequency').value * (i + 1);
+			gains[i] = context.createGainNode();
+			var str1 = '#volume-control-';
+			var num = i + 1;
+			var volumeSlider = str1.concat(num.toString());
+			gains[i].gain.value = document.querySelector(volumeSlider).value;
+			oscillators[i].connect(gains[i]);
+			gains[i].connect(master);
+			oscillators[i].noteOn(0);
+
+		}
+
+		master.connect(context.destination);
+	}
+
+	function off() {
+
+		playing = false;
+		for (var i=0; i<oscillators.length; i++){
+			oscillators[i].noteOff(0);
+			oscillators[i].disconnect();
+		}
+
+	};
+
+	$('#play-audio').click(function(){
+		if (!playing){
+			startOsc();
+		}
+	});
+
+	$('#stop-audio').click(function(){
+		off();
+	});
+
+	function changeWaveform() {
+		for (var i=0; i<oscillators.length; i++) {
+			oscillators[i].type = parseInt(document.getElementById("waveform").value);
+		}
+	}
+	function controlVolume1(vol) {
+		document.querySelector('#volume-1').value = vol;
+		gains[0].gain.value = vol;
+	}
+	function controlVolume2(vol) {
+		document.querySelector('#volume-2').value = vol;
+		gains[1].gain.value = vol;
+	}
+	function controlVolume3(vol) {
+		document.querySelector('#volume-3').value = vol;
+		gains[2].gain.value = vol;
+	}
+	function controlVolume4(vol) {
+		document.querySelector('#volume-4').value = vol;
+		gains[3].gain.value = vol;
+	}
+	function controlVolume5(vol) {
+		document.querySelector('#volume-5').value = vol;
+		gains[4].gain.value = vol;
+	}
+	function controlMaster(vol) {
+		document.querySelector('#master-volume').value = vol;
+		master.gain.value = vol;
+	}
+	function controlFrequency(freq) {
+		document.querySelector('#frequency').value = freq;
+		for (var i=0; i<oscillators.length; i++){
+			oscillators[i].frequency.value = freq * (i + 1);
+		}
+	}
+
+	</script>
+
+
+
+</body>
+</html>

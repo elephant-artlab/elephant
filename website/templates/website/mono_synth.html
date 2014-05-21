@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/mono_synth<.css"/>
+</head>
+
+<body>
+
+	<h3>Oscillator 1</h3>
+	<select id="oscillator-type-1" onchange="changeWaveform()">
+		<option value="2">Sawtooth</option>
+		<option value="1">Square</option>
+		<option value="3">Triangle</option>
+	</select>
+	<label for="oscillator-frequency-1">Frequency</label>
+	<input id="oscillator-frequency-1" type="range" min="20" max="1000" value="200" step="1" oninput="controlFrequency(value)">
+	<output for="oscillator-frequency-1" id="frequency">200</output>
+
+	<h3>Oscillator 2</h3>
+	<select id="oscillator-type-2" onchange="changeWaveform()">
+		<option value="2">Sawtooth</option>
+		<option value="1">Square</option>
+		<option value="3">Triangle</option>
+	</select>
+	<label for="oscillator-frequency-2">Frequency</label>
+	<input id="oscillator-frequency-2" type="range" min="20" max="1000" value="200" step="1" oninput="controlFrequency(value)">
+	<output for="oscillator-frequency-2" id="frequency">200</output>
+
+	<script>
+	var context = new webkitAudioContext();
+	var oscillator_1, oscillator_2;
+	var gain_1, gain_2;
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+#play-audio, #stop-audio {
+	border: 1px solid #444;
+	border-radius: 4px;
+	background: #ccc;
+	color: #000;
+	display: inline-block;
+	margin: 0 .5em;
+	padding: .5em 2em;
+	text-indent: -9999px;			
+}
+#play-audio {
+	background: #0c0;
+}
+#stop-audio {
+	background: #f66;
+}
+#play-audio:hover, #stop-audio:hover {
+	border: 1px solid #999;			
+}
+#play-audio:active, #stop-audio:active {
+	background: #ff0;
+}		
+
+.volume-control {
+	width: 100px;
+	height: 300px;
+	-webkit-appearance: slider-vertical;
+}
+.master-control {
+	width: 300px;
+}

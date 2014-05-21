@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>Elephant | Art Lab</title>
+	
+	{% load staticfiles %}
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="{% static 'website/js/elephant.js' %}" ></script>
+	<script src="{% static 'website/js/responsiveslides.min.js' %}"></script>
+	<script src="{% static 'website/js/fancybox/jquery.fancybox-1.3.4.pack.js' %}"></script>
+
+	<link rel="icon" href="{% static 'website/images/favicon.ico' %}" />
+	<link rel="icon shortcut" type="image/x-icon" href="{% static 'website/images/favicon.ico' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'website/css/elephant.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'website/css/responsiveslides.css' %}" />
+	<link rel="stylesheet" type="text/css" media="screen" href="{% static 'website/js/fancybox/jquery.fancybox-1.3.4.css' %}"/>
+</head>
+<body>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+	$(".skype-icon").fancybox();
+
+});
+</script>
+
+	<div id="container">
+
+		<div id="header">
+			<div id="header-clickable"></div>
+		</div>
+
+		<div class="menu">
+			<table>
+				<tr>
+					<td class="menu-cell"><a href="/">PROYECTOS</a></td>
+					<!--<td class="menu-cell"><a href="/about/">ACERCA DE</a></td>-->
+					<td class="menu-cell"><a href="/services/">SERVICIOS</a></td>
+					<td class="menu-cell"><a href="/contact/">CONTACTO</a></td>
+					<!--<td class="menu-cell"><a href="/">ENGLISH</a></td>-->
+				</tr>
+			</table>
+		</div>
+
+		<div id="body">
+		</br>
+		{% block content %}
+		<table class="projects-table">
+			<tr>
+				{%for project in projects %}
+				<td>
+					<div class="img-wrap">
+						<a href="/project/{{project.id}}"><img src="{{MEDIA_URL}}{{project.image}} "></a>
+						<a href="/project/{{project.id}}"><p class="project-name">{{project.image_name}}</p></a>
+						<a href="/project/{{project.id}}"><p class="project-type">{{project.image_description}}</p></a>
+					</div>
+				</td>
+				{% if forloop.counter|divisibleby:5 and not forloop.last %}
+			</tr>
+			<tr>
+				{% endif %}
+				{% endfor %}
+			</tr>
+		</table>
+		{% endblock %}
+		</div>
+
+		<div id="footer">
+			<div class="footer-text">
+				<div class="footer-logo">
+					<img src="{% static 'website/images/elephant_logo.png' %}" height="90">
+				</div>
+				<div class="footer-contact">
+					<p class="footer-title">Contacto</p>
+					<p> email - contacto@elephant-artlab.com</p>
+					<p>skype - elephant.art.lab</p>
+					<p>© 2014 Elephant Art Lab. Todos los derechos reservados.</p>
+				</div>
+				<div class="footer-social">
+					<table>
+						<tr>
+							<td><a href="http://www.facebook.com/elephantartlab" target="_blank"><img src="{% static 'website/images/social/f1.png' %}" height="50" width="50"></a></td>
+							<td><a href="http://www.twitter.com/ElephantArtLab" target="_blank"><img src="{% static 'website/images/social/f2.png' %}" height="50" width="50"></a></td>
+							<td><a href="http://instagram.com/elephantartlab" target="_blank"><img src="{% static 'website/images/social/f3.png' %}" height="50" width="50"></a></td>
+							<td><a href="" target="_blank"><img src="{% static 'website/images/social/f4.png' %}" height="50" width="50"></a></td>
+							<td><a href="https://www.behance.net/elephantartlab" target="_blank"><img src="{% static 'website/images/social/f5.png' %}" height="50" width="50"></a></td>
+							<td><a href="https://www.youtube.com/user/elephantartlab" target="_blank"><img src="{% static 'website/images/social/f6.png' %}" height="50" width="50"></a></td>
+							<td><a href="https://vimeo.com/elephantartlab" target="_blank"><img src="{% static 'website/images/social/f7.png' %}" height="50" width="50"></a></td>
+							<td><a class="skype-icon" href="/skype/"><img src="{% static 'website/images/social/f8.png' %}" height="50" width="50"></a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+</div>
+
+
+</body>
+</html>
