@@ -3,8 +3,6 @@ import os
 from django.db import models
 from django.db.models.signals import pre_delete
 
-
-
 class Project(models.Model):
 	name = models.CharField(max_length=100, null=False, blank=False)
 	description = models.TextField(blank=True, null=True)

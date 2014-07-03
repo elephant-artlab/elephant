@@ -65,3 +65,7 @@ def contact_view(request):
 
 def skype_view(request):
     return render(request, 'website/skype.html')
+
+def maintenance_view(request):
+	return render(request, 'website/maintenance.html')
+	

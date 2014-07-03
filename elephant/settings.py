@@ -23,6 +23,8 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+MAINTENANCE = True
+
 ALLOWED_HOSTS = []
 
 

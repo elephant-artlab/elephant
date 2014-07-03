@@ -4,11 +4,16 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
-
-	url(r'^admin/', include(admin.site.urls)),
-	url(r'^', include('website.urls')),
-)
+if settings.MAINTENANCE:
+	urlpatterns = patterns('',
+		url(r'^admin/', include(admin.site.urls)),
+		url(r'^', 'website.views.maintenance_view'),
+	)
+else:
+	urlpatterns = patterns('',
+		url(r'^admin/', include(admin.site.urls)),
+		url(r'^', include('website.urls')),
+	)
 
 if settings.DEBUG:
 	urlpatterns += patterns('',

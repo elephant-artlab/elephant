@@ -28,23 +28,22 @@ $(function () {
 				<h2>{{project.name}}</h2>
 				{{project.description | safe}}
 				{% if project.url %}
-			</br>
-			<a href="{{project.url}}" target="_blank">IR AL SITIO</a>
-			{% endif %}
-		</td>
-		<td class="project-carousel">
-			<div class="rslides_container">
-			
-				<ul class="rslides" id="slider1">
-					{% for photo in photos %}
-					<li><img src="{{MEDIA_URL}}{{photo.image}}"></li>
-					{% endfor %}
-				</ul>
+				<a href="{{project.url}}" target="_blank">IR AL SITIO</a>
+				{% endif %}
+			</td>
+			<td class="project-carousel">
+				<div class="rslides_container">
+					
+					<ul class="rslides" id="slider1">
+						{% for photo in photos %}
+						<li><img src="{{MEDIA_URL}}{{photo.image}}"></li>
+						{% endfor %}
+					</ul>
 
-			</div>
-		</td>
-	</tr>
-</table>
+				</div>
+			</td>
+		</tr>
+	</table>
 
 </div>
 

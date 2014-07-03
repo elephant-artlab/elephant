@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>Elephant Art Lab</title>
+	{% load staticfiles %}
+	<link rel="icon" href="{% static 'website/images/favicon.ico' %}" />
+	<link rel="icon shortcut" type="image/x-icon" href="{% static 'website/images/favicon.ico' %}" />
+
+
+	<style>
+	@font-face {
+		font-family: 'bebasneue';
+		src: url('../fonts/BebasNeue.eot');
+		src: url('../fonts/BebasNeue.eot?#iefix') format('embedded-opentype'),  
+		url('../fonts/BebasNeue.woff') format('woff'),  
+		url('../fonts/BebasNeue.ttf') format('truetype'),  
+		url('../fonts/BebasNeue.svg') format('svg');
+		font-weight: normal; 
+		font-style: normal;
+	}
+	body {
+		background-color: #f4f4f4;
+	}
+	h1 {
+		color: #333;
+		font-family: 'bebasneue',  Arial, Helvetica;
+	}
+	#content {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-top: -190px;
+		margin-left: -135px;
+		text-align: center;
+	}
+	.logo {
+		opacity: 0.8;
+	}
+	.facebook {
+		opacity: 1;
+	}
+	</style>
+
+
+</head>
+
+<body>
+	<div id="content">
+		<img class="logo" src="{% static 'website/images/elephant_logo.png' %}" height="300">
+		<h1>PRÓXIMAMENTE</h1>
+		<a href="http://www.facebook.com/elephantartlab"><img class="facebook" src="{% static 'website/images/social/f1.png' %}" height="50" width="50"></a>
+	</div>
+</body>
+</html>
