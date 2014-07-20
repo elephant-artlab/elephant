@@ -103,5 +103,8 @@ STATIC_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), '../../st
 
 EMAIL_HOST = 'smtp.webfaction.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'fabianesqueda'
-EMAIL_HOST_PASSWORD = 'Fabian=43'
+
+try:
+    from .dev_settings import *
+except ImportError:
+    pass
