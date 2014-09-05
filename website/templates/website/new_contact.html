@@ -1,0 +1,53 @@
+{% extends "website/home.html"%}
+
+{% block content %}
+{% load staticfiles %}
+
+
+<div id="contact-banner">
+	<img src="{% static 'website/images/elephant_logo.png' %}" alt="">
+</div>
+
+<div id="contact-section">
+	<h2>CONTACT</h2><br>
+	<div id="contact-description">
+		<p>Are you interested in our services? We would love to hear what you have in mind. To reach us, please fill in our contact form or email us at <span style="color: #FF5E45">hello@elephant-artlab.com</span>. We aim to reply within one bussines day.</p>
+		<br>
+		<p>Alternatively, you can also find us through our social networks.</p>
+		<table>
+			<tr>
+				<td><a href="http://www.facebook.com/elephantartlab" target="_blank"><img src="{% static 'website/images/social/1o.png' %}" height="80" onmouseover="this.src='{% static 'website/images/social/1c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/1o.png' %}'"></a></td>
+				<td><p>facebook.com/elephantartlab</p></td>
+			</tr>
+			<tr>
+				<td><a href="http://www.twitter.com/ElephantArtLab" target="_blank"><img src=" {% static 'website/images/social/2o.png' %}" height="80" onmouseover="this.src=' {% static 'website/images/social/2c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/2o.png' %}'"></a></td>
+				<td><p>twitter.com/elephantartlab</p></td>
+			</tr>
+			<tr>
+				<td><a href="http://instagram.com/elephantartlab" target="_blank"><img src=" {% static 'website/images/social/3o.png' %}" height="80" onmouseover="this.src=' {% static 'website/images/social/3c.png' %}'" onmouseout="this.src=' {% static 'website/images/social/3o.png' %}'"></a></td>
+				<td><p>instagram.com/elephantartlab</p></td>
+			</tr>
+		</table>
+	</div>
+	
+	<!--
+	<div id="contact-form">
+		<h2>Contáctanos</h2>
+		<form method="POST">
+			{% csrf_token %}
+			<p>Nombre <span>{{ form.name.errors.as_text | cut:"*" }}</span></p> {{ form.name }} <br>
+			<p>Email <span>{{ form.email.errors.as_text | cut:"*" }}</span> </p> {{ form.email }} <br>
+			<p>Mensaje <span>{{ form.message.errors.as_text | cut:"*" }}</span> </p> {{ form.message }} <br>
+			<br>
+			<button class="send">ENVIAR</button>
+			{% if data_entered and message_sent %}
+			<label id="sentMessage">Tu mensaje ha sido enviado.</label>
+			{% elif data_entered and not message_sent %}
+			<label id="sentMessage">Tu mensaje no se pudo enviar.</label>
+			{% endif %}
+		</form>
+	</div>
+-->
+</div>
+
+{% endblock %}

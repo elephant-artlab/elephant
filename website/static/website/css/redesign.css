@@ -1,0 +1,268 @@
+@font-face {
+	font-family: 'Raleway', sans-serif;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #f8f8f8;
+}
+p {
+	margin: 0;
+	padding: 0;
+}
+h1, h2, h3 {
+	padding: 0;
+	margin: 0;
+}
+
+#header {
+	background-color: #f8f8f8;
+	height: 110px;
+	width: 100%;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 24px;
+	position: fixed;
+	border: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+	z-index: 10;
+
+	transition: color 1s linear;
+	-webkit-transition: color 1s linear;
+	-moz-transition: color 1s linear;
+}
+
+	#header img {
+		padding: 0;
+		margin: 0;
+		height: 70px;
+		margin-top: 15px;
+	}
+
+	#header li {
+		display: inline;
+		margin-left: 20px;
+	}
+	#header ul {
+		padding: 0;
+		margin: 0;
+	} 
+
+.logo {
+	float: left;
+	padding-left: 10%;
+}
+.menu {
+	padding: 0;
+	margin: 0;
+	margin-top: 40px;
+	padding-right: 10%;
+	float: right;
+}
+
+.menu a {
+	text-decoration: none;
+	color: black;
+	transition: color 1s linear;
+	-webkit-transition: color 1s linear;
+	-moz-transition: color 1s linear;
+}
+.menu a:visited { 
+	text-decoration: none;
+	color: black;
+	transition: color 1s linear;
+	-webkit-transition: color 1s linear;
+	-moz-transition: color 1s linear;
+}
+.menu a:hover { 
+	text-decoration: underline;
+}
+
+/**************************************/
+#body-container {
+	position: absolute;
+	top: 110px;
+	width: 100%;
+}
+/**************************************/
+
+#introduction {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	background-color: #f8f8f8;
+	position: relative;
+	width: 100%;
+	height: 100px;
+	vertical-align: center;
+	z-index: 0;
+}
+	#introduction p {
+		text-align: center;
+		cursor: default !important;
+	}
+#introduction-description {
+	padding-top: 25px;
+}
+.color-changer {
+
+}
+
+/**************************************/
+#television-head {
+	background-color: #000000;
+	position: relative;
+	padding-top: 50px;
+	height: 400px;
+	width: 100%;
+	z-index: 1;
+	transition: background 1s linear;
+	-webkit-transition: background 1s linear;
+	-moz-transition: background 1s linear;
+}
+	#television-head img {
+		padding-left: 26%;
+		margin-left: -220px;
+		height: 100%;
+		opacity: 0.90;
+		/*png-shadow: 5px 5px 5px #222;*/
+	}
+
+/**************************************/
+#services {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	position: relative;
+	background-color: #f8f8f8;
+	margin: 0 auto;
+	width: 100%;
+	z-index: 2;
+}
+	#services h2 {
+		font-size: 32px;
+		margin-bottom: 5px;
+		border-bottom: 1px solid black;
+
+		transition: color 1s linear;
+		-webkit-transition: color 1s linear;
+		-moz-transition: color 1s linear;
+	}
+	#services p {
+		font-size: 18px;
+		line-height: 130%;
+	}
+
+#service-top, #service-bottom {
+	display: table-row;
+}
+
+.service-left {
+	float: left;
+	margin-top: 40px;
+	padding-left: 10%;
+	width: 38%;
+	max-width: 600px;
+}
+.service-right {
+	text-align: right;
+	float: right;
+	padding-right: 10%;
+	margin-top: 40px;
+	width: 38%;
+	max-width: 600px;
+}
+#service-contact {
+	text-align: left;
+	padding-left: 10%;
+	margin-top: 40px;
+	padding-bottom: 40px;
+	width: 70%;
+}
+.contact-label{
+	transition: color 1 linear;
+	-webkit-transition: color 1 linear;
+	-moz-transition: color 1 linear;
+}
+
+/**************************************/
+/*Estilos footer*/
+#footer {
+	position: relative;
+	width: 100%;
+	height: 110px;
+	margin: 0 auto;
+	background-color: #333333;
+	border-top: 1px solid rgba(0,0,0,0.2);
+	z-index: 2;
+}
+.footer-logo {
+	float: left;
+	padding-top: 10px;
+	padding-left: 10%;
+}
+	.footer-logo img {
+		opacity: 0.5;
+		padding-right: 5px;
+		border-right: 1px solid #f8f8f8;
+	}
+.footer-contact {
+	float: left;
+	margin-top: 30px;
+	margin-left: 10px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	line-height: 130%;
+	color: #f8f8f8;
+	font-size: 10px;
+	opacity: 0.5;
+}
+.footer-social {
+	margin-top: 32px;
+	margin-right: 10%;
+	float: right;
+}
+
+/**********************************************************************/
+/*CONTACT*/
+#contact-banner {
+	background-color: #FFF647;
+	background-color: black;
+	position: relative;
+	height: 300px;
+	width: 100%;
+	border: 1px solid rgba(0,0,0,0.1);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	z-index: 0;
+}
+	#contact-banner img {
+		padding-left: 50%;
+		margin-left: -135px;
+		height: 95%;
+	}
+
+#contact-section {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	position: absolute;
+	margin: 0 auto;
+	margin-top: 40px;
+	width: 100%;
+	line-height: 130%;
+	z-index: 1;
+}
+	#contact-section h2 {
+		padding-left: 10%;
+		padding-bottom: 10px;
+	}
+
+#contact-description {
+	float: left;
+	position: relative;;
+	padding-left: 10%;
+	width: 38%;
+	max-width: 600px;
+}
+	#contact-description table {
+		padding-top: 20px;
+		padding-left: 5%;
+	}

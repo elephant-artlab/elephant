@@ -14,4 +14,5 @@ urlpatterns = patterns('website.views',
 	url(r'^test', 'test_view'),
     url(r'^project/(?P<project_id>-?\d+)/$', 'project_view'),
     url(r'^skype', 'skype_view'),
+    url(r'^projects', 'projects_view')
 )

@@ -1,20 +1,115 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!doctype html> 
 <html>
 	<head>
 		{% load staticfiles %}
-		<title>Parallax Tutorial</title>
+		<title>Elephant Art Lab | Design Agency</title>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<link rel="stylesheet" href="{% static 'website/css/redesign.css' %}" type="text/css" />
 
+		<link rel="stylesheet" href="{% static 'website/css/redesign.css' %}" type="text/css" />
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
-		<section id="menu">
-			<div class="logo"><img src="" alt="" /></div>
+
+		<section id="header">
+			<div class="logo"><img src="http://estudio1974.com/static/website/images/elephant_artlab_logo.png" alt="" /></div>
+			<div class="menu">
 			<ul>
-				<li>ABOUT</li>
-				<li>PROYECTOS</li>
-				<li>CONTACO</li>
+				<li><a href="/">HOME</a></li>
+				<li>PROJECTS</li>
+				<li><a href="/contact">CONTACT</a></li>
 			</ul>
+			</div>
 		</section>
+
+		<section id="body-container">
+			{% block content %}
+			<div id="introduction">
+				<div id="introduction-description">
+					<p><span class="color-changer">Independent Design Agency//Mexico City</span></p>
+					<p><span class="color-changer" style="color: #FF5E45">Branding.</span><span class="color-changer" style="color: #FF63A7">Web Design.</span><span class="color-changer" style="color: #AC82FF">Photography.</span><span class="color-changer" style="color: #4EA4EF">Moving Image.</span>
+					</p>
+				</div>
+			</div>
+
+			<div id="television-head">
+				<img src="{% static 'website/images/elephant_television.png' %}" alt="" />
+			</div>
+
+			<div id="services">
+				<div id="service-top">
+					<div class="service-left">
+						<h2>BRANDING</h2>
+						<p>Starting your own brand or planning to refresh your existing one? We can work together to make your brand attractive and iconic, from concept to production.</p>
+					</div>
+					<div class="service-right">
+						<h2>WEB DESIGN</h2>
+						<p>We can design (and host!) the perfect website for your band, restaurant or organization - you name it. All our designs are modern, elegant and efficeint. We build sites from scratch or reshape existing work.</p>
+					</div>
+				</div>
+				<div id="service-bottom">
+					<div class="service-left">
+						<h2>PHOTOGRAPHY</h2>
+						<p>Elephant's in-house team of photographers delivers solutions to all your photographic needs. Our home studio is ideal for band and product shoots. We also offer on-location shoots. </p>
+					</div>
+					<div class="service-right">
+						<h2>MOVING IMAGE</h2>
+						<p>Planning a music video? Need engaging video content for your site? At Elephant, we have the necessary tools and expertise to deliver professional video productions that meet yours and your customers' needs.</p>
+					</div>
+				</div>
+				<div id="service-contact">
+					<p><span style="font-weight: 600">Interested in our services?</span> We would love to hear what you have in mind. <span class="contact-label" style="color: #FF63A7">Contact us!</span></p>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="footer-logo">
+					<img src="{% static 'website/images/elephant_logo.png' %}" height="90">
+				</div>
+				<div class="footer-contact">
+					<p>CONTACT</p>
+					<p>EMAIL - contacto@elephant-artlab.com</p>
+					<p>SKYPE - elephant.art.lab</p>
+					<p>© 2014 ELEPHANT ART LAB. All rights reserved.</p>
+				</div>
+				<div class="footer-social">
+					<table>
+						<tr>
+							<td><a href="http://www.facebook.com/elephantartlab" target="_blank"><img src="{% static 'website/images/social/f1.png' %}" height="45" width="45"></a></td>
+							<td><a href="http://www.twitter.com/ElephantArtLab" target="_blank"><img src="{% static 'website/images/social/f2.png' %}" height="45" width="45"></a></td>
+							<td><a href="http://instagram.com/elephantartlab" target="_blank"><img src="{% static 'website/images/social/f3.png' %}" height="45" width="45"></a></td>
+							<!--<td><a href="" target="_blank"><img src="{% static 'website/images/social/f4.png' %}" height="35" width="35"></a></td>
+							<td><a href="https://www.behance.net/elephantartlab" target="_blank"><img src="{% static 'website/images/social/f5.png' %}" height="35" width="35"></a></td>
+							<td><a href="https://www.youtube.com/user/elephantartlab" target="_blank"><img src="{% static 'website/images/social/f6.png' %}" height="35" width="35"></a></td>
+							<td><a href="https://vimeo.com/elephantartlab" target="_blank"><img src="{% static 'website/images/social/f7.png' %}" height="35" width="35"></a></td>
+							<td><a class="skype-icon" href="/skype/"><img src="{% static 'website/images/social/f8.png' %}" height="35" width="35"></a></td>-->
+						</tr>
+					</table>
+				</div>
+			</div>
+		{% endblock %}
+		</section>
+
+
+
+		<script>
+			$(document).ready(function() {
+
+				$(".color-changer").click(function() {  
+					var theColorIs = $(this).css("color");
+					$("#television-head").css("background-color", theColorIs);
+					$("#header, #services h2, .contact-label").css("color", theColorIs);
+					$(".menu a, .menu a:visited").css("color", theColorIs);
+				});
+
+			$(document).scroll(function () {
+				s = $(document).scrollTop();
+				if (s>=0){
+					$("#introduction").css("-webkit-transform","translateY(" + (s/1) + "px)");
+					$("#television-head").css("-webkit-transform","translateY(" + (s/5) + "px)");
+				}
+			});
+
+			});
+		</script> 
+
 	</body>
 </html>
